@@ -10,7 +10,9 @@ namespace MCRCA
 
             //Exemplo
             Notas notas = BuscaNotas();
-            CalculaMedia(notas.n1, notas.n2);
+            string aprovacao = CalculaMedia(notas.n1, notas.n2);
+
+            Console.WriteLine("Media: " + aprovacao);
 
             Console.WriteLine();
             Console.WriteLine();
@@ -46,15 +48,34 @@ namespace MCRCA
 
             Console.WriteLine("Digite um valor para dar início a contagem");
             string valorDigitado = Console.ReadLine();
-            int valor = Int32.Parse(valorDigitado);
-            return valor;
+            return ConvertToInt(valorDigitado);
         }
 
-        public static void CalculaMedia(int n1, int n2)
+        public static int ConvertToInt(string valor)
         {
-            double media = (n1 + n2) / 2;
+            Console.WriteLine("Olá, sou o Metodo com retorno com argumento");
 
+            return Int32.Parse(valor);
+        }
+
+        public static string CalculaMedia(int n1, int n2)
+        {
+            Console.WriteLine("Olá, sou o Metodo com retorno sem argumento");
+            
+            double media = (n1 + n2) / 2;
             Console.WriteLine("O média é: " + media);
+
+            string aprovacao;
+            if (media >= 7)
+            {
+                aprovacao = "aprovada";
+            }
+            else
+            {
+                aprovacao = "reprovada";
+            }
+
+            return aprovacao;
         }
 
         public static void Contador(int limite)
